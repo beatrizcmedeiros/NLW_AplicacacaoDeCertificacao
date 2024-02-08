@@ -13,20 +13,20 @@ import com.rocketseat.certification_nlw.modules.students.useCases.VerifyIfHasCer
 @RequestMapping("/students")
 public class StudentController {
 
+    // Preciso usar o meu USECASE
     @Autowired
     private VerifyIfHasCertificationUseCase verifyIfHasCertificationUseCase;
 
+
     @PostMapping("/verifyIfHasCertification")
-    public String verifyIfHasCertification(@RequestBody VerifyHasCertificationDTO verifyHasCertificationDTO){
+    public String verifyIfHasCertification(@RequestBody VerifyHasCertificationDTO verifyHasCertificationDTO) {
         // Email
         // Technology
-
         var result = this.verifyIfHasCertificationUseCase.execute(verifyHasCertificationDTO);
-        if(result)
+        if (result) {
             return "Usuário já fez a prova";
+        }
 
-        // System.out.println(verifyHasCertificationDTO);
-        return "Usuário pode fazer a prova.";
+        return "Usuário pode fazer a prova";
     }
-    
 }
